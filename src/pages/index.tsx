@@ -3,6 +3,8 @@ import { FaCalendarAlt, FaUserAlt } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Prismic from '@prismicio/client';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { getPrismicClient } from '../services/prismic';
 
@@ -58,7 +60,13 @@ export default function Home({ postsPagination }: HomeProps) {
               <div className={styles.info}>
                 <p>
                   <FaCalendarAlt />
-                  {post.first_publication_date}
+                  {format(
+                    new Date(post.first_publication_date),
+                    'dd MMM yyyy',
+                    {
+                      locale: ptBR,
+                    }
+                  )}
                 </p>
                 <p>
                   <FaUserAlt />

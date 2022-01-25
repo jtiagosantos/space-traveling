@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { FaCalendarAlt, FaUserAlt, FaRegClock } from 'react-icons/fa';
 import PrismicDOM from 'prismic-dom';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import { getPrismicClient } from '../../services/prismic';
 
 import { calculateRedingTime } from '../../utils/calculateReadingTime';
@@ -71,7 +73,9 @@ export default function Post({ post }: PostProps) {
           <div className={styles.info}>
             <p>
               <FaCalendarAlt />
-              {post.first_publication_date}
+              {format(new Date(post.first_publication_date), 'dd MMM yyyy', {
+                locale: ptBR,
+              })}
             </p>
             <p>
               <FaUserAlt />
