@@ -119,9 +119,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   );
 
-  const filteredPosts = posts.results.splice(0, 2);
-
-  const paths = filteredPosts.map(post => ({
+  const paths = posts.results.map(post => ({
     params: { slug: post.uid },
   }));
 
