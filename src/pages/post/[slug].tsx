@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { FaCalendarAlt, FaUserAlt, FaRegClock } from 'react-icons/fa';
 import PrismicDOM from 'prismic-dom';
+import Prismic from '@prismicio/client';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { getPrismicClient } from '../../services/prismic';
@@ -89,7 +90,7 @@ export default function Post({ post }: PostProps) {
 
           <div className={styles.post_text}>
             {formattedPost.data.content.heading.map((data, index) => (
-              <article>
+              <article key={data}>
                 <h1 className={styles.heading}>{data}</h1>
                 <p className={styles.body}>
                   {formattedPost.data.content.body[index]}
@@ -104,14 +105,27 @@ export default function Post({ post }: PostProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [
-      '/post/axios-e-um-cliente-http-baseado-em-promises-para-fazer',
-      '/post/introducao-a-testing-library--testando-componentes',
-      '/post/jquery-a-historia-da-biblioteca-js-mais-usada-da-ultima',
-    ],
-    fallback: true,
-  };
+  const prismic = getPrismicClient();
+  const posts = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'post')],
+    {
+      fetch: [
+        'post.title',
+        'post.subtitle',
+        'post.author',
+        'post.banner',
+        'post.content',
+      ],
+    }
+  );
+
+  const filteredPosts = posts.results.splice(0, 2);
+
+  const paths = filteredPosts.map(post => ({
+    params: { slug: post.uid },
+  }));
+
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
