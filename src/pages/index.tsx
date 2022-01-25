@@ -10,7 +10,6 @@ import { getPrismicClient } from '../services/prismic';
 
 import Header from '../components/Header';
 
-import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
 
 interface Post {

@@ -10,7 +10,6 @@ import { getPrismicClient } from '../../services/prismic';
 
 import { calculateRedingTime } from '../../utils/calculateReadingTime';
 
-import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
 interface Post {
