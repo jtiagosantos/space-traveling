@@ -1,4 +1,4 @@
-<h1 align="center">spacetraveling</h1>
+<h1 align="center">Spacetraveling</h1>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jtiagosantos/spacetraveling?color=%green">
@@ -92,6 +92,12 @@ The following tools were used in the construction of project:
 You can view the project layout through the link below:
 
 - **[Layout Web](https://www.figma.com/file/kd3TTvyo87gkxmlYfbMN3e/Desafios-M%C3%B3dulo-3-ReactJS-(Copy)?node-id=0%3A1)**
+
+<hr>
+
+## :cloud: Deploy
+
+- **[Spacetraveling](https://spacetraveling-gilt.vercel.app/)**
 
 <hr>
 
