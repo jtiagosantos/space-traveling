@@ -21,6 +21,7 @@
   <a href="#-run-project">Run Project</a> •
   <a href="#-technologies">Technologies</a> •
   <a href="#-layout">Layout</a> •
+  <a href="#-deploy">Deploy</a> •
   <a href="#-author">Author</a> •
   <a href="#-license">License</a>
 </p>
